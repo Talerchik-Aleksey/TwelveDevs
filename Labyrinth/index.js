@@ -1,5 +1,4 @@
-var row = 5;
-var col = 5;
+const START_POINT = 'S';
 
 function isPath(arr) {
   var direction = [
@@ -9,7 +8,7 @@ function isPath(arr) {
 
   var queue = [];
 
-  queue.push(GetStartPoint(arr, 'S'));
+  queue.push(GetStartPoint(arr, START_POINT));
 
   while (queue.length > 0) {
     var currentNode = queue[0];
@@ -43,6 +42,9 @@ function GetStartPoint(arr, symbol) {
     }
   }
 }
+
+var row = 5;
+var col = 5;
 
 var arr = [
   ['#', 'S', '#', '#', '#'],
