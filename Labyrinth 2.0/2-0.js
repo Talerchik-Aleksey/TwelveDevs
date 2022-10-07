@@ -1,4 +1,4 @@
-size = [5, 5]
+sizef = [5, 5]
 
 var arr = [
   ["#", "#", "#", "#", "#"],
@@ -8,17 +8,22 @@ var arr = [
   ["#", ".", "#", "#", "#"],
 ];
 
-arr = SearchPath(arr, size);
+arr = SearchPath(arr, sizef);
 
 function SearchPath(arr, size) {
   const startPoint = FindFirstCoincidenceInMatrix(arr);
   if (startPoint == null) throw new Error('NullStartPoint');
 
-  let queue = [];
-  SearchFreePath(arr, startPoint);
+  var queueForCheaking = [];
+  queueForCheaking = SearchFreePath(arr, startPoint, queueForCheaking, size);
+  FindPath(arr, size, queueForCheaking);
 }
 
-function SearchFreePath(arr, currentPoint) {
+function FindPath(arr, size, queueForCheaking) {
+  // TODO: recursion function
+}
+
+function SearchFreePath(arr, currentPoint, queueForCheaking, size) {
   const direction = [
     [0, 1], [0, -1],
     [1, 0], [-1, 0],
@@ -30,9 +35,11 @@ function SearchFreePath(arr, currentPoint) {
     var colNumber = currentPoint[1] + direction[i][1];
 
     if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber)) {
-      console.log(`${rowNumber} ${colNumber}`);
+      queueForCheaking.push([rowNumber, colNumber]);
     }
   }
+  
+  return queueForCheaking;
 }
 
 function isNotBlocked(rowNumber, colNumber, size) {
