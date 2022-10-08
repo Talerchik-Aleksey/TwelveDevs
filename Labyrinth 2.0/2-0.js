@@ -20,10 +20,21 @@ function SearchPath(arr, size) {
 }
 
 function FindPath(arr, size, queueForCheaking) {
-  // TODO: recursion function
+  while (queueForCheaking.length > 0) {
+    const currentPoint = queueForCheaking[0];
+    queueForCheaking.shift();
+    arr[currentPoint[0]][currentPoint[1]] = '1';
+
+    if (isDoor(arr, currentPoint, size)) {
+      console.log("!!!");
+      return true;
+    };
+
+    SearchFreePath(arr, currentPoint, queueForCheaking, size);
+  }
 }
 
-function SearchFreePath(arr, currentPoint, queueForCheaking, size) {
+function isDoor(arr, currentPoint, size) {
   const direction = [
     [0, 1], [0, -1],
     [1, 0], [-1, 0],
@@ -33,13 +44,49 @@ function SearchFreePath(arr, currentPoint, queueForCheaking, size) {
   for (var i = 0; i < pointSidesNumber; i++) {
     var rowNumber = currentPoint[0] + direction[i][0];
     var colNumber = currentPoint[1] + direction[i][1];
+    if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber)) {
+      if (arr[rowNumber][colNumber] == "E") {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+function SearchFreePath(arr, currentPoint, queueForCheaking, size) {
+  const direction = [
+    [0, 1], [0, -1],
+    [1, 0], [-1, 0],
+  ];
+  const pointSidesNumber = 4;
+  const oldQueue = queueForCheaking;
+
+  for (var i = 0; i < pointSidesNumber; i++) {
+    var rowNumber = currentPoint[0] + direction[i][0];
+    var colNumber = currentPoint[1] + direction[i][1];
 
     if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber)) {
       queueForCheaking.push([rowNumber, colNumber]);
     }
   }
-  
+
+  if (oldQueue.length == queueForCheaking) {
+    deadlockHandling();
+    return queueForCheaking = [];
+  }
+
   return queueForCheaking;
+}
+
+function deadlockHandling() {
+  arr[currentPoint[0]][currentPoint[1]] = '#';
+  const clearArray = ClearVisited();
+  SearchPath();
+}
+
+function ClearVisited() {
+  
 }
 
 function isNotBlocked(rowNumber, colNumber, size) {
@@ -49,9 +96,9 @@ function isNotBlocked(rowNumber, colNumber, size) {
 
 function isValid(arr, rowNumber, colNumber) {
   const [wallSign, startPoint, visiterPoint] = ["#", "S", "1"];
-  return arr[rowNumber][colNumber] != wallSign    &&
-         arr[rowNumber][colNumber] != startPoint  &&
-         arr[rowNumber][colNumber] != visiterPoint
+  return arr[rowNumber][colNumber] != wallSign &&
+    arr[rowNumber][colNumber] != startPoint &&
+    arr[rowNumber][colNumber] != visiterPoint
 }
 
 function ClearVisited(arr) {
