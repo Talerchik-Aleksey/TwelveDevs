@@ -1,11 +1,11 @@
 size = [5, 5]
 
 var arr = [
-  ["#", "S", "#", "#", "#"],
-  ["#", ".", "#", ".", "E"],
+  ["#", "S", "#", ".", "#"],
   ["#", ".", ".", ".", "#"],
+  [".", ".", ".", ".", "#"],
   ["#", ".", ".", ".", "#"],
-  ["#", "#", "#", "#", "#"],
+  [".", "#", "#", "E", "#"],
 ];
 
 const direction = [
@@ -13,24 +13,26 @@ const direction = [
   [1, 0], [-1, 0],
 ];
 
-console.log(SearchPath());
+const res = SearchPath();
+console.log(res);
 
 function SearchPath() {
   const startNode = FindFirstCoincidenceInMatrix(arr);
   let currentNode = startNode;
   let Path = [];
-  stopFlag = false;
+
+  let visitedNumber = 1;
 
   while (arr[currentNode[0]][currentNode[1]] != 'E') {
     if (arr[currentNode[0]][currentNode[1]] != 'S') {
-      arr[currentNode[0]][currentNode[1]] = '1';
+      arr[currentNode[0]][currentNode[1]] = visitedNumber;
     }
 
     for (var i = 0; i < 4; i++) {
       var rowNumber = currentNode[0] + direction[i][0];
       var colNumber = currentNode[1] + direction[i][1];
 
-      if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber)) {
+      if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber, ["#", "S", visitedNumber])) {
 
         switch (i) {
           case 0:
@@ -49,14 +51,17 @@ function SearchPath() {
         i = 4; // Stop For
         currentNode = [rowNumber, colNumber];
       }
+    }
 
-      if (isStop(arr, currentNode) && arr[currentNode[0]][currentNode[1]] != "E") {
-        arr[currentNode[0]][currentNode[1]] = '#';
-        ClearVisited();
-        SearchPath();
-      }
+    if (isStop(arr, currentNode,  ["#", "S", visitedNumber]) && arr[currentNode[0]][currentNode[1]] != "E") {
+      arr[currentNode[0]][currentNode[1]] = '#';
+      visitedNumber += 1;
+      Path = [];
+      currentNode = FindFirstCoincidenceInMatrix(arr);
+    }
 
-      if (arr[rowNumber][colNumber] == "E") break;
+    if (arr[rowNumber][colNumber] == "E") {
+      break;
     }
   }
   return Path;
@@ -74,14 +79,14 @@ function ClearVisited() {
   return arr;
 }
 
-function isStop(arr, currentNode) {
+function isStop(arr, currentNode, stopSymbols = ["#", "S", "1"]) {
   result = true;
 
   for (var i = 0; i < 4; i++) {
     var rowNumber = currentNode[0] + direction[i][0];
     var colNumber = currentNode[1] + direction[i][1];
 
-    if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber)) {
+    if (isNotBlocked(rowNumber, colNumber, size) && isValid(arr, rowNumber, colNumber, stopSymbols)) {
       result = false;
     }
     if (arr[currentNode[0]][currentNode[1]] == "E") {
