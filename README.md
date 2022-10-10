@@ -44,7 +44,7 @@ N = 3   =>   M = 6<br>
 
 Ответ: no
 
-<a hfer="https://codepen.io/talerchik-aleksey/pen/jOxQqvj?editors=1111">Codepen</a> 
+<a href="https://codepen.io/talerchik-aleksey/pen/jOxQqvj?editors=1111">Codepen</a> 
 
 <h3> Калькулятор </h3>
 На вход даётся число N
@@ -81,4 +81,4 @@ r - right
 u - up
 l - left
 
-<a hfer="https://codepen.io/talerchik-aleksey/pen/XWqydxd?editors=1111">Codepen</a>
+<a href="https://codepen.io/talerchik-aleksey/pen/XWqydxd?editors=1111">Codepen</a>
