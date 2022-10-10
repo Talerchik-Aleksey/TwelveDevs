@@ -1,7 +1,7 @@
 size = [5, 5]
 
 var arr = [
-  ["#", "S", "#", ".", "#"],
+  ["#", ".", "#", ".", "#"],
   ["#", ".", ".", ".", "#"],
   [".", ".", ".", ".", "#"],
   ["#", ".", ".", ".", "#"],
@@ -13,11 +13,17 @@ const direction = [
   [1, 0], [-1, 0],
 ];
 
-const res = SearchPath();
-console.log(res);
+try{
+  const res = SearchPath();
+  console.log(res);
+} catch(e) {
+  console.log(e.message);
+}
 
 function SearchPath() {
   const startNode = FindFirstCoincidenceInMatrix(arr);
+  if (startNode === undefined) throw new Error("Not found start point");
+
   let currentNode = startNode;
   let Path = [];
 
