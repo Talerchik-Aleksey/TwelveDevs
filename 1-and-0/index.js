@@ -2,15 +2,18 @@ var score = -1;
 
 function ZeroOneGen(dataArr, digits, index, ) {
     var i, z;
-    if (index == digits) {
+    
+  if (index == digits) {
         var str = "";
-        for (i = 0; i < digits; i++) {
+      
+      for (i = 0; i < digits; i++) {
             str = str + dataArr[i];
         }
-        if (!str.match(/111/)) {
+      
+      if (!str.match(/111/)) {
             score += 1;
-            console.log(str);
         }
+      
         return;
     }
 
@@ -22,6 +25,10 @@ function ZeroOneGen(dataArr, digits, index, ) {
     return score;
 }
 
-var dataArrTemp = new Array(2);
-var resalt = ZeroOneGen(dataArrTemp, 2, 0);
-console.log(resalt);
+const inputNumber = '';
+while(typeof number != "number")
+number = prompt('Enter the number:') * 1;
+
+var dataArrTemp = new Array(number);
+var resalt = ZeroOneGen(dataArrTemp, number, 0);
+alert(resalt);
