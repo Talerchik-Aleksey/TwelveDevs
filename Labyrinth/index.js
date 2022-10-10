@@ -8,6 +8,7 @@ function isPath(arr) {
 
   var queue = [];
   const startNode = GetStartPoint(arr, START_POINT)
+  
   if (startNode === undefined) throw new Error("Not found start point");
   queue.push(startNode);
 
@@ -31,6 +32,7 @@ function isPath(arr) {
       }
     }
   }
+
   return false;
 }
 
