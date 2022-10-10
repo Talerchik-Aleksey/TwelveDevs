@@ -10,6 +10,8 @@ N = 1   =>   M = 2<br>
 N = 2   =>   M = 3<br>
 N = 3   =>   M = 6<br>
 
+<a href="https://codepen.io/talerchik-aleksey/pen/poVQyVM?editors=1111">Codepen</a>
+
 <h3> Лабиринт </h3>
 На вход даётся след. данные:
 числа N и M - кол-во строк и столбцов
@@ -41,6 +43,9 @@ N = 3   =>   M = 6<br>
 ##.####<br>
 
 Ответ: no
+
+<a hfer="https://codepen.io/talerchik-aleksey/pen/jOxQqvj?editors=1111">Codepen</a> 
+
 <h3> Калькулятор </h3>
 На вход даётся число N
 
@@ -75,3 +80,5 @@ d - down
 r - right
 u - up
 l - left
+
+<a hfer="https://codepen.io/talerchik-aleksey/pen/XWqydxd?editors=1111">Codepen</a>
