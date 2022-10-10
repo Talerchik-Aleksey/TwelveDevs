@@ -7,8 +7,9 @@ function isPath(arr) {
   ];
 
   var queue = [];
-
-  queue.push(GetStartPoint(arr, START_POINT));
+  const startNode = GetStartPoint(arr, START_POINT)
+  if (startNode === undefined) throw new Error("Not found start point");
+  queue.push(startNode);
 
   while (queue.length > 0) {
     var currentNode = queue[0];
@@ -54,8 +55,12 @@ var arr = [
   ['#', '#', '#', '#', '#'],
 ];
 
-if (isPath(arr)) {
-  console.log("Yes");
-} else {
-  console.log("No");
+try {
+  if (isPath(arr)) {
+    console.log("Yes");
+  } else {
+    console.log("No");
+  }
+} catch (error) {
+  console.log(error.message);
 }
