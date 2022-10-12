@@ -10,7 +10,7 @@ N = 1   =>   M = 2<br>
 N = 2   =>   M = 3<br>
 N = 3   =>   M = 6<br>
 
-<a href="https://codepen.io/talerchik-aleksey/pen/poVQyVM?editors=1111">Codepen</a>
+<a href="https://codepen.io/talerchik-aleksey/pen/VwxqNeq?editors=1111"> Codepen </a>
 
 <h3> Лабиринт </h3>
 На вход даётся след. данные:
@@ -55,6 +55,9 @@ N = 3   =>   M = 6<br>
 Примеры:
 N = 3   ->   M = 2 (1 + 2, 1 * 3) <br>
 N = 8   ->   M = 1 (1 * 3 + 5)<br>
+
+<a href="https://codepen.io/talerchik-aleksey/pen/bGMOJwE?editors=1111"> Codepen </a>
+
 
 <h3> Выход из лабиринт </h3>
 На вход даётся след. данные:
