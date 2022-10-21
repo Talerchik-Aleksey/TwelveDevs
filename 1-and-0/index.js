@@ -1,4 +1,4 @@
-const MOD = 1000_000_007;
+const MOD = 1_000_000_007;
 
 function countStrings(N) {
 	var i, j;
@@ -29,6 +29,6 @@ function countStrings(N) {
 	return ans - 1;
 }
 
-var N = 10_000_000; // 6 seconds
+var N = 9_999_995; // 6 seconds
 console.log(countStrings(N));
 
