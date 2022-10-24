@@ -29,6 +29,7 @@ function countStrings(N) {
 	return ans - 1;
 }
 
-var N = 9_999_995; // 6 seconds
-console.log(countStrings(N));
+for (i = 1; i < 20; i++) {
+	console.log(countStrings(i) + ' ' + i);
+}
 

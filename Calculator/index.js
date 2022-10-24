@@ -8,11 +8,19 @@ console.log(array);
 
 
 
-function CalculateMathSolution(to = 9_999_999) {
+function CalculateMathSolution(to = 10_999_999) {
     let solutionArray = [];
     solutionArray[19] = 33;
+
     for (let index = 20; index < to; index++) {
-        solutionArray.push((index / (index - 1)) * 1.15 * solutionArray[index - 1]);
+        if(index % 5 === 0)
+            solutionArray.push(Math.floor((index / (index - 1)) * 1.151525 * solutionArray[index - 1]));
+        else if (index % 3 === 0)
+            solutionArray.push(Math.floor((index / (index - 1)) * 1.22 * solutionArray[index - 1]));
+        else {
+            solutionArray.push(Math.floor((index / (index - 1)) * 1.17 * solutionArray[index - 1]));
+
+        }
     }
 
     return solutionArray;
