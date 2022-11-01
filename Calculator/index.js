@@ -14,10 +14,14 @@ function CalculateMathSolution(to = 10_999_999) {
     solutionArray[18] = 25;
 
     for (let index = 20; index < to; index++) {
-            solutionArray.push(solutionArray[index - 1] / solutionArray[index - 2]);
+            solutionArray.push(formula(index));
     }
 
     return solutionArray;
+
+    function formula(index) {
+        return ((index / (index - 1)) * 1.2021212) * solutionArray[index - 1];
+    }
 }
 
 // for (let index = 0; index < 32; index++) {
