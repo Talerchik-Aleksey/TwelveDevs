@@ -1,4 +1,4 @@
-const START_POINT = 1000;
+const START_POINT = 10000;
 
 let arrayOfSolutions = CalculateMathSolution(START_POINT);
 
@@ -13,10 +13,9 @@ function CalculateMathSolution(find, to = 20_000_000) {
 	let solutionArray = [0, 1, 3, 6, 12, 23, 43];
 
 	for (let index = 7; index < to; index++) {
-		solutionArray.push(parseFloat((
-			(solutionArray[index - 1]
-			/ solutionArray[index - 2]))
-			* solutionArray[index - 1]));
+		solutionArray.push(`${
+			(solutionArray[index - 1] / solutionArray[index - 2])
+			* solutionArray[index - 1]}`);
 
 		if (index === find) {
 			console.log(solutionArray[index]);
