@@ -11,16 +11,10 @@ console.log(array);
 function CalculateMathSolution(to = 10_999_999) {
     let solutionArray = [];
     solutionArray[19] = 33;
+    solutionArray[18] = 25;
 
     for (let index = 20; index < to; index++) {
-        if(index % 5 === 0)
-            solutionArray.push(Math.floor((index / (index - 1)) * 1.151525 * solutionArray[index - 1]));
-        else if (index % 3 === 0)
-            solutionArray.push(Math.floor((index / (index - 1)) * 1.22 * solutionArray[index - 1]));
-        else {
-            solutionArray.push(Math.floor((index / (index - 1)) * 1.17 * solutionArray[index - 1]));
-
-        }
+            solutionArray.push(solutionArray[index - 1] / solutionArray[index - 2]);
     }
 
     return solutionArray;
