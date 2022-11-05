@@ -12,7 +12,6 @@ N = 1   =>   M = 2
 N = 2   =>   M = 3  
 N = 3   =>   M = 6  
 
-
 [Codepen](https://codepen.io/talerchik-aleksey/pen/poVQyVM?editors=1111)
 
 ## Лабиринт  

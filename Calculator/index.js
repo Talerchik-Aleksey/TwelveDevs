@@ -4,9 +4,8 @@
 
 let array = CalculateMathSolution();
 
-console.log(array);
-
-
+for (let number = 0; number < 31; number++) 
+console.log(array[number] + " " + number);
 
 function CalculateMathSolution(to = 10_999_999) {
     let solutionArray = [];
@@ -24,35 +23,33 @@ function CalculateMathSolution(to = 10_999_999) {
     }
 }
 
-// for (let index = 0; index < 32; index++) {
-//     var count = 0;
+console.log("--------------");
+for (let index = 0; index < 90; index++) {
+    var count = 0;
 
-//     console.log("------------------------");
-//     getNumberOfOperation(index);
-//     console.log(count + " - " + index);
-//     console.log("------------------------");
-// }
+    getNumberOfOperation(index);
+    console.log(count + "  " + index);
+}
 
-// function getNumberOfOperation(num, startNum = 1,) {
-//     operation = [2, 5, 3];
+function getNumberOfOperation(num, startNum = 1,) {
+     operation = [2, 5, 3];
 
-//     if(num === 1) {
-//         return;
-//     }
+     if(num === 1) {
+         return;
+     }
 
-//     if (startNum === num) {
-//         count += 1;
-//     }
-//     for (let index = 0; index < operation.length; index++) {
-//         const element = operation[index];
-//         if (startNum < num) {
-//             if (index < 2 && startNum + element <= num) {
-//                 console.log(`+ ${element} | ${startNum}`)
-//                 getNumberOfOperation(num, startNum + element);
-//             } else if (index === 2 && startNum * element <= num) {
-//                 console.log(`* ${element} | ${startNum}`)
-//                 getNumberOfOperation(num, startNum * element);
-//             }
-//         }
-//     }
-// }
+     if (startNum === num) {
+         count += 1;
+     }
+
+     for (let index = 0; index < operation.length; index++) {
+         const element = operation[index];
+         if (startNum < num) {
+             if (index < 2 && startNum + element <= num) {
+                 getNumberOfOperation(num, startNum + element);
+             } else if (index === 2 && startNum * element <= num) {
+                 getNumberOfOperation(num, startNum * element);
+             }
+         }
+     }
+ }
